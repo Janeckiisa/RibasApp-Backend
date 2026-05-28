@@ -5,7 +5,7 @@ const app = require("./app")
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
-    console.log("Mongo conectado 😎")
+    console.log("Mongo conectado")
 
     app.listen(3000, () => {
         console.log("Servidor rodando")

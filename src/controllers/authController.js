@@ -1,0 +1,87 @@
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+
+const UserLogin = require("../models/UserLogin")
+
+const register = async (req, res) => {
+
+    try {
+
+        const { userId, senha, tipoUsuario } = req.body
+
+        const senhaHash = await bcrypt.hash(senha, 10)
+
+        const login = await UserLogin.create({
+            userId,
+            senha: senhaHash,
+            tipoUsuario
+        })
+
+        res.status(201).json(login)
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        })
+
+    }
+
+}
+
+const login = async (req, res) => {
+
+    try {
+
+        const { userId, senha } = req.body
+
+        const user = await UserLogin.findOne({
+            userId
+        })
+
+        if (!user) {
+            return res.status(404).json({
+                error: "Usuário não encontrado"
+            })
+        }
+
+        const senhaValida = await bcrypt.compare(
+            senha,
+            user.senha
+        )
+
+        if (!senhaValida) {
+            return res.status(401).json({
+                error: "Senha inválida"
+            })
+        }
+
+        const token = jwt.sign(
+            {
+                id: user._id,
+                tipo: user.tipoUsuario
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "1d"
+            }
+        )
+
+        res.json({
+            token
+        })
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        })
+
+    }
+
+}
+
+module.exports = {
+    register,
+    login
+}
