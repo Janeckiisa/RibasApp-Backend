@@ -1,0 +1,621 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1779992922993
+  modified: 1779992922993
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_15fd84d19daf496d9390ea280d70e9ba
+      created: 1779996045457
+      modified: 1779996045457
+      sortKey: -1779996045457
+      description: ""
+    children:
+      - url: "{{ _.URL }}/users"
+        name: Create Users
+        meta:
+          id: req_24032315a5e84016abdbdf404d459c62
+          created: 1779993176642
+          modified: 1779998404788
+          isPrivate: false
+          description: ""
+          sortKey: -1779996323713
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Isa",
+              "matricula": "123",
+              "cargo": "Operador",
+              "telefone": "41999999999",
+              "status": "ATIVO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users"
+        name: Get All Users
+        meta:
+          id: req_61ebdd54ed9d44e9a37d472a80bb8e08
+          created: 1779993326521
+          modified: 1779996548751
+          isPrivate: false
+          description: ""
+          sortKey: -1779996323663
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users/6a1896528997a68b794488b7"
+        name: Get User by ID
+        meta:
+          id: req_a4487ebf19a2469abdda7e2feb662ed3
+          created: 1779996164469
+          modified: 1779996550578
+          isPrivate: false
+          description: ""
+          sortKey: -1779996323638
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users/6a1896528997a68b794488b7"
+        name: Update User by ID
+        meta:
+          id: req_d3b7152925ef4452b82bc892fe4517f0
+          created: 1779996323513
+          modified: 1779996553660
+          isPrivate: false
+          description: ""
+          sortKey: -1779996323625.5
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "cargo": "RH"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users/6a1896528997a68b794488b7"
+        name: Delete User By ID
+        meta:
+          id: req_3a15d36e6f9243b5b5b35653425a0686
+          created: 1779996494800
+          modified: 1779996539472
+          isPrivate: false
+          description: ""
+          sortKey: -1779996323613
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/users/6a1896528997a68b794488b7"
+        name: Ativar User by ID (Update)
+        meta:
+          id: req_ff2cd9bb9a934787ba9ec1717dfdb499
+          created: 1779996572674
+          modified: 1779996799791
+          isPrivate: false
+          description: ""
+          sortKey: -1779996572674
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "isActive": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Auth
+    meta:
+      id: fld_fedad33e04e1432e9d0a164b1af08bde
+      created: 1779996981907
+      modified: 1779996981907
+      sortKey: -1779996981907
+      description: ""
+    children:
+      - url: "{{ _.URL }}/auth/login"
+        name: Login
+        meta:
+          id: req_4eedd3e925a04d15a03802b06b2308fd
+          created: 1779996984464
+          modified: 1779998009035
+          isPrivate: false
+          description: ""
+          sortKey: -1779996984464
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "matricula": "123",
+              "senha": "senhaNova1234"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/auth/change-password"
+        name: Change Password
+        meta:
+          id: req_b0ab1c7c6be04544b5a73e890220d6ed
+          created: 1779997865877
+          modified: 1779998039416
+          isPrivate: false
+          description: ""
+          sortKey: -1779997865877
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "novaSenha": "senhaNova1234"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+          - name: Authorization
+            value: "{{ _.Token }}"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Veiculos
+    meta:
+      id: fld_278420760c6e4260861010be63b156bd
+      created: 1779998069238
+      modified: 1779998069238
+      sortKey: -1779998069238
+      description: ""
+    children:
+      - url: "{{ _.URL }}/veiculos"
+        name: Create Veiculo
+        meta:
+          id: req_dad3142fa1384f2e80b6091ec6b70427
+          created: 1779998076583
+          modified: 1779998683874
+          isPrivate: false
+          description: ""
+          sortKey: -1779998191490
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "placa": "ABC1234",
+              "modelo": "Volvo FH",
+              "categoria": "GUINDASTE",
+              "status": "ATIVO",
+              "capacidade": 20
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/veiculos"
+        name: Get All Veiculos
+        meta:
+          id: req_8c4a4a6b2e134b2d8638c8363ceff09c
+          created: 1779998191290
+          modified: 1779999505910
+          isPrivate: false
+          description: ""
+          sortKey: -1779998191440
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/veiculos/6a189e1b945dc24fed1a75f6"
+        name: Get Veiculo By ID
+        meta:
+          id: req_30e792df7cb24aa79898ee1d96ba9712
+          created: 1779998633457
+          modified: 1779998665329
+          isPrivate: false
+          description: ""
+          sortKey: -1779998191390
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/veiculos/6a189e1b945dc24fed1a75f6"
+        name: Update Veiculo By ID
+        meta:
+          id: req_834bf6f271e34806be8ee1380d01ede0
+          created: 1779998724042
+          modified: 1779998865556
+          isPrivate: false
+          description: ""
+          sortKey: -1779998191190
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "status": "MANUTENCAO"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/veiculos/6a189e1b945dc24fed1a75f6"
+        name: Delete Veiculo By ID
+        meta:
+          id: req_e237e1d423f94f28abfa30136f296439
+          created: 1779998910058
+          modified: 1779998941022
+          isPrivate: false
+          description: ""
+          sortKey: -1779998191090
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/veiculos/6a189e1b945dc24fed1a75f6"
+        name: Ativar Veiculo By ID (Update)
+        meta:
+          id: req_b232115c2b664c999df871caf850f322
+          created: 1779998951684
+          modified: 1779999020707
+          isPrivate: false
+          description: ""
+          sortKey: -1779998951684
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"isActive": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: DocumentoVeiculo (Provisorio)
+    meta:
+      id: fld_a6827154c6384ee9a14b6b8216087fbf
+      created: 1779999051961
+      modified: 1779999168303
+      sortKey: -1779999051961
+      description: ""
+    children:
+      - url: "{{ _.URL }}/documentos-veiculo"
+        name: Create DocumentoVeiculo
+        meta:
+          id: req_d143b0bca25c44d8a276f2d6f26ce20f
+          created: 1779999102314
+          modified: 1779999491615
+          isPrivate: false
+          description: ""
+          sortKey: -1779999348750
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "veiculoId": "6a189e1b945dc24fed1a75f6",
+              "nome": "CRLV",
+              "documentoUrl": "crlv.pdf"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/documentos-veiculo"
+        name: Get All DocumentoVeiculos
+        meta:
+          id: req_81be6bdcdc6941a4892817925a515fa4
+          created: 1779999222515
+          modified: 1779999508991
+          isPrivate: false
+          description: ""
+          sortKey: -1779999335364
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/documentos-veiculo/6a18a1dc945dc24fed1a75f8"
+        name: Get DocumentoVeiculo By ID
+        meta:
+          id: req_eba31e63e64b47e180561dda94943f98
+          created: 1779999321978
+          modified: 1779999350840
+          isPrivate: false
+          description: ""
+          sortKey: -1779999321978
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/documentos-veiculo/6a18a1dc945dc24fed1a75f8"
+        name: Update DocumentoVeiculo By ID
+        meta:
+          id: req_e22fe5f5dc364307add5d7643ff43c40
+          created: 1779999375522
+          modified: 1779999518397
+          isPrivate: false
+          description: ""
+          sortKey: -1779999321878
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Licenciamento 2026"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/documentos-veiculo/6a18a1dc945dc24fed1a75f8"
+        name: Delete DocumentoVeiculo By ID
+        meta:
+          id: req_32977c11602c4368b1c62e1744553f0d
+          created: 1779999532608
+          modified: 1779999566793
+          isPrivate: false
+          description: ""
+          sortKey: -1779999321778
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.URL }}/documentos-veiculo/6a18a1dc945dc24fed1a75f8"
+        name: Ativar DocumentoVeiculo By ID (Update)
+        meta:
+          id: req_6bd4ed5e1ce04f27baad0c0ffffdd6fd
+          created: 1779999588340
+          modified: 1779999639241
+          isPrivate: false
+          description: ""
+          sortKey: -1779999588340
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"isActive": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.6.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1779993157449
+    modified: 1779993157449
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1779993157440
+    modified: 1779998552328
+    isPrivate: false
+  data:
+    URL: http://localhost:3000
+    Token: Bearer
+      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMTg5NjUyODk5N2E2OGI3OTQ0ODhiOCIsInRpcG8iOiJPUEVSQURPUiIsImlhdCI6MTc3OTk5Nzg0NywiZXhwIjoxNzgwMDg0MjQ3fQ.M70wfBaxECAcjwybkEMblT1VNGmiglHoDZuniFzK3fk
