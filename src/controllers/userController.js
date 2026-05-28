@@ -40,7 +40,7 @@ const getUsers = async (req, res) => {
     try {
 
         const users = await User.find({
-            isActive: true
+            isActive: true //desativar esse para pegar os usuários desativados
         })
 
         res.json(users)
