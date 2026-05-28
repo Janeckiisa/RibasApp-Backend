@@ -22,7 +22,12 @@ const UserLoginSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
-    }
+    },
+
+    primeiroLogin: {
+        type: Boolean,
+        default: true
+    },
 
 }, {
     timestamps: true

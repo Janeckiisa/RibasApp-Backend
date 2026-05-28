@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-
 const UserLogin = require("../models/UserLogin")
 
 const register = async (req, res) => {
@@ -68,7 +67,8 @@ const login = async (req, res) => {
         )
 
         res.json({
-            token
+            token,
+            primeiroLogin: user.primeiroLogin
         })
 
     } catch (error) {
@@ -81,7 +81,37 @@ const login = async (req, res) => {
 
 }
 
+const changePassword = async (req, res) => {
+    try {
+        const { novaSenha } = req.body
+        const senhaHash = await bcrypt.hash(
+            novaSenha,
+            10
+        )
+
+        await UserLogin.findByIdAndUpdate(
+            req.user.id,
+            {
+                senha: senhaHash,
+                primeiroLogin: false
+            }
+        )
+
+        res.json({
+            message: "Senha alterada"
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+
+    }
+
+}
+
 module.exports = {
     register,
-    login
+    login,
+    changePassword
 }

@@ -1,12 +1,29 @@
 const User = require("../models/User")
+const bcrypt = require("bcrypt")
+const UserLogin = require("../models/UserLogin")
 
 const createUser = async (req, res) => {
 
     try {
-
         const user = await User.create(req.body)
+        const senhaTemporaria =
+            req.body.matricula + req.body.telefone
 
-        res.status(201).json(user)
+        const senhaHash = await bcrypt.hash(
+            senhaTemporaria,
+            10
+        )
+
+        await UserLogin.create({
+            userId: user._id,
+            senha: senhaHash,
+            tipoUsuario: "OPERADOR"
+        })
+
+        res.status(201).json({
+            message: "Usuário criado",
+            senhaTemporaria
+        })
 
     } catch (error) {
 
