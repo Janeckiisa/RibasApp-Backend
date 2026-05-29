@@ -1,5 +1,4 @@
-
-  # RibasApp Backend
+# RibasApp Backend
 
 Backend da aplicação **RibasApp**, desenvolvido utilizando Node.js, Express e MongoDB.
 
