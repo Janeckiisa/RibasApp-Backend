@@ -1,0 +1,308 @@
+
+  # RibasApp Backend
+
+Backend da aplicação **RibasApp**, desenvolvido utilizando Node.js, Express e MongoDB.
+
+A aplicação foi criada para gerenciamento de usuários, veículos e documentos de veículos, contando também com autenticação via JWT e fluxo de primeiro acesso com troca obrigatória de senha.
+
+---
+
+# Tecnologias Utilizadas
+
+* Node.js
+* Express
+* MongoDB Atlas
+* Mongoose
+* JWT (JSON Web Token)
+* Bcrypt
+* CORS
+* Dotenv
+* Nodemon
+
+---
+
+# Funcionalidades
+
+## Usuários
+
+* Criar usuário
+* Editar usuário
+* Desativar usuário
+* Buscar usuário por ID
+* Listar usuários
+
+## Autenticação
+
+* Login com matrícula e senha
+* Geração de token JWT
+* Primeiro login obrigatório
+* Alteração de senha
+
+## Veículos
+
+* Criar veículo
+* Editar veículo
+* Desativar veículo
+* Buscar veículo por ID
+* Listar veículos
+
+## Documentos de Veículo
+
+* Criar documento
+* Editar documento
+* Desativar documento
+* Buscar documento por ID
+* Listar documentos
+
+---
+
+# Arquitetura
+
+```text
+Frontend
+↓
+Backend Node.js + Express
+↓
+MongoDB Atlas
+```
+
+---
+
+# Estrutura do Projeto
+
+```text
+src/
+│
+├── controllers/
+├── middlewares/
+├── models/
+├── routes/
+│
+├── app.js
+└── server.js
+```
+
+---
+
+# Instalação
+
+Clone o projeto:
+
+```bash
+git clone URL_DO_REPOSITORIO
+```
+
+Entre na pasta:
+
+```bash
+cd ribasapp-backend
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+# Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto:
+
+```env
+PORT=3000
+
+MONGO_URI=sua_uri_mongodb
+
+JWT_SECRET=seu_segredo_jwt
+```
+
+---
+
+# Executando o Projeto
+
+Modo desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Modo produção:
+
+```bash
+npm start
+```
+
+---
+
+# Rotas da API
+
+## Usuários
+
+### Criar usuário
+
+```http
+POST /users
+```
+
+### Buscar todos usuários
+
+```http
+GET /users
+```
+
+### Buscar usuário por ID
+
+```http
+GET /users/:id
+```
+
+### Atualizar usuário
+
+```http
+PUT /users/:id
+```
+
+### Desativar usuário
+
+```http
+DELETE /users/:id
+```
+
+---
+
+## Autenticação
+
+### Login
+
+```http
+POST /auth/login
+```
+
+### Alterar senha
+
+```http
+PUT /auth/change-password
+```
+
+---
+
+## Veículos
+
+### Criar veículo
+
+```http
+POST /veiculos
+```
+
+### Buscar todos veículos
+
+```http
+GET /veiculos
+```
+
+### Buscar veículo por ID
+
+```http
+GET /veiculos/:id
+```
+
+### Atualizar veículo
+
+```http
+PUT /veiculos/:id
+```
+
+### Desativar veículo
+
+```http
+DELETE /veiculos/:id
+```
+
+---
+
+## Documentos de Veículo
+
+### Criar documento
+
+```http
+POST /documentos-veiculo
+```
+
+### Buscar todos documentos
+
+```http
+GET /documentos-veiculo
+```
+
+### Buscar documento por ID
+
+```http
+GET /documentos-veiculo/:id
+```
+
+### Atualizar documento
+
+```http
+PUT /documentos-veiculo/:id
+```
+
+### Desativar documento
+
+```http
+DELETE /documentos-veiculo/:id
+```
+
+---
+
+# Autenticação JWT
+
+As rotas protegidas utilizam autenticação via JWT.
+
+Enviar token no header:
+
+```http
+Authorization: Bearer TOKEN
+```
+
+---
+
+# Fluxo de Primeiro Login
+
+Ao criar um usuário, o sistema gera automaticamente uma senha temporária.
+
+No primeiro login:
+
+* o backend identifica que é o primeiro acesso
+* o sistema obriga o usuário a alterar a senha
+* após alteração, o campo `primeiroLogin` é atualizado para `false`
+
+---
+
+# Deploy
+
+API hospedada no Render:
+[API Online](https://ribasapp-backend.onrender.com)
+
+Banco de dados hospedado no MongoDB Atlas.
+
+Front- End localizado no repositório: [RibasApp](https://github.com/EduadoHenrique/RibasApp)
+
+---
+
+# Melhorias Futuras
+
+* Upload de documentos
+* Swagger/OpenAPI
+* Controle de permissões
+* Logs
+* Refresh Token
+* Docker
+* Testes automatizados
+
+---
+
+# Autor
+
+Projeto desenvolvido por Isabelle durante estudos e desenvolvimento acadêmico/profissional em Engenharia de Software.
