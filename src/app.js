@@ -31,18 +31,3 @@ app.use(
 )
 
 module.exports = app
-app.use(cors())
-app.use(express.json())
-
-app.use("/users", userRoutes)
-
-app.use("/auth", authRoutes)
-
-app.use("/veiculos", veiculoRoutes)
-
-app.use(
-    "/documentos-veiculo",
-    documentoVeiculoRoutes
-)
-
-module.exports = app
