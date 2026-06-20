@@ -286,7 +286,7 @@ API hospedada no Render:
 
 Banco de dados hospedado no MongoDB Atlas.
 
-Front- End localizado no repositório: [RibasApp](https://github.com/EduadoHenrique/RibasApp)
+Front-End localizado no repositório: [RibasApp](https://github.com/EduadoHenrique/RibasApp)
 
 ---
 
