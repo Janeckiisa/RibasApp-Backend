@@ -17,7 +17,7 @@ const createUser = async (req, res) => {
         await UserLogin.create({
             userId: user._id,
             senha: senhaHash,
-            tipoUsuario: "OPERADOR"
+            tipoUsuario: req.body.tipoUsuario || "OPERADOR"
         })
 
         res.status(201).json({
