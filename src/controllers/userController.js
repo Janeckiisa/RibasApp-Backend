@@ -7,8 +7,12 @@ const TIPOS_VALIDOS = ["OPERADOR", "GESTOR", "ADMIN"]
 const createUser = async (req, res) => {
 
     try {
+        // Separa tipoUsuario dos dados do User
+        // (User model não tem esse campo)
         const { tipoUsuario, ...dadosUser } = req.body
+
         const user = await User.create(dadosUser)
+
         const senhaTemporaria =
             dadosUser.matricula + dadosUser.telefone
 
@@ -16,6 +20,7 @@ const createUser = async (req, res) => {
             senhaTemporaria,
             10
         )
+
         const tipo = TIPOS_VALIDOS.includes(tipoUsuario)
             ? tipoUsuario
             : "OPERADOR"
@@ -132,10 +137,50 @@ const deleteUser = async (req, res) => {
 
 }
 
+const updateRole = async (req, res) => {
+
+    try {
+
+        const { tipoUsuario } = req.body
+
+        if (!TIPOS_VALIDOS.includes(tipoUsuario)) {
+            return res.status(400).json({
+                error: "Tipo de usuário inválido. Use: OPERADOR, GESTOR ou ADMIN"
+            })
+        }
+
+        const userLogin = await UserLogin.findOneAndUpdate(
+            { userId: req.params.id, isActive: true },
+            { tipoUsuario },
+            { new: true }
+        )
+
+        if (!userLogin) {
+            return res.status(404).json({
+                error: "Login do usuário não encontrado"
+            })
+        }
+
+        res.json({
+            message: "Nível de acesso atualizado",
+            tipoUsuario: userLogin.tipoUsuario
+        })
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        })
+
+    }
+
+}
+
 module.exports = {
     createUser,
     getUsers,
     getUserById,
     updateUser,
+    updateRole,
     deleteUser
 }
