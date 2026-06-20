@@ -2,22 +2,28 @@ const User = require("../models/User")
 const bcrypt = require("bcrypt")
 const UserLogin = require("../models/UserLogin")
 
+const TIPOS_VALIDOS = ["OPERADOR", "GESTOR", "ADMIN"]
+
 const createUser = async (req, res) => {
 
     try {
-        const user = await User.create(req.body)
+        const { tipoUsuario, ...dadosUser } = req.body
+        const user = await User.create(dadosUser)
         const senhaTemporaria =
-            req.body.matricula + req.body.telefone
+            dadosUser.matricula + dadosUser.telefone
 
         const senhaHash = await bcrypt.hash(
             senhaTemporaria,
             10
         )
+        const tipo = TIPOS_VALIDOS.includes(tipoUsuario)
+            ? tipoUsuario
+            : "OPERADOR"
 
         await UserLogin.create({
             userId: user._id,
             senha: senhaHash,
-            tipoUsuario: req.body.tipoUsuario || "OPERADOR"
+            tipoUsuario: tipo
         })
 
         res.status(201).json({
