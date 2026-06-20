@@ -299,9 +299,3 @@ Front-End localizado no repositório: [RibasApp](https://github.com/EduadoHenriq
 * Refresh Token
 * Docker
 * Testes automatizados
-
----
-
-# Autor
-
-Projeto desenvolvido por Isabelle durante estudos e desenvolvimento acadêmico/profissional em Engenharia de Software.
