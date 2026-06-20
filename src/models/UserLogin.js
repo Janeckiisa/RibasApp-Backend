@@ -15,8 +15,7 @@ const UserLoginSchema = new mongoose.Schema({
 
     tipoUsuario: {
         type: String,
-        enum: ["ADMIN", "OPERADOR", "GESTOR"],
-        default: "OPERADOR"
+        enum: ["ADMIN", "OPERADOR", "GESTOR"]
     },
 
     isActive: {
