@@ -21,8 +21,10 @@ const createUser = async (req, res) => {
             10
         )
 
-        const tipo = TIPOS_VALIDOS.includes(tipoUsuario)
-            ? tipoUsuario
+        // tipoUsuario pode chegar como string vazia — tratar como ausente
+        const tipoLimpo = tipoUsuario && tipoUsuario.trim()
+        const tipo = TIPOS_VALIDOS.includes(tipoLimpo)
+            ? tipoLimpo
             : "OPERADOR"
 
         await UserLogin.create({
@@ -137,6 +139,35 @@ const deleteUser = async (req, res) => {
 
 }
 
+const getRole = async (req, res) => {
+
+    try {
+
+        const userLogin = await UserLogin.findOne({
+            userId: req.params.id,
+            isActive: true
+        })
+
+        if (!userLogin) {
+            return res.status(404).json({
+                error: "Login do usuário não encontrado"
+            })
+        }
+
+        res.json({
+            tipoUsuario: userLogin.tipoUsuario
+        })
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        })
+
+    }
+
+}
+
 const updateRole = async (req, res) => {
 
     try {
@@ -180,6 +211,7 @@ module.exports = {
     createUser,
     getUsers,
     getUserById,
+    getRole,
     updateUser,
     updateRole,
     deleteUser
